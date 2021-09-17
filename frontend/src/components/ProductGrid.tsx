@@ -54,6 +54,7 @@ function ProductGrid({ productsSSR }: ProductGridProps) {
             boxShadow="lg"
             rounded="lg"
             spacing="8"
+            justifyContent="space-between"
           >
             <Image
               src={product.imageUrl}
