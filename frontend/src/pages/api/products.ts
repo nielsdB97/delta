@@ -2,13 +2,8 @@
 import { statSync, createReadStream } from "fs";
 import { join } from "path";
 import type { NextApiRequest, NextApiResponse } from "next";
+import type { Product } from "types/product";
 
-interface Product {
-  id: string;
-  title: string;
-  price: string;
-  tags: string[];
-}
 type Data = Product[];
 
 export default function handler(

@@ -16,7 +16,7 @@ function Header() {
       </Heading>
 
       <Stack isInline alignItems="center">
-        <IconButton icon={<HiHeart />} aria-label="Favorites" />
+        <IconButton icon={<HiHeart />} aria-label="Favorieten" />
         <Text as="span" color="white" fontWeight="semibold">
           Welkom Niels!
         </Text>
