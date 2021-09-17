@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.7",
@@ -23,9 +24,15 @@
     "use-persisted-reducer": "^2.1.0"
   },
   "devDependencies": {
+    "@cypress/react": "^5.10.0",
+    "@cypress/webpack-dev-server": "^1.6.0",
     "@types/react": "17.0.21",
+    "cypress": "^8.4.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
-    "typescript": "4.4.3"
+    "html-webpack-plugin": "^5.3.2",
+    "typescript": "4.4.3",
+    "webpack": "^5.53.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
