@@ -49,7 +49,7 @@ function Header() {
           </Box>
         </Box>
         <Text as="span" color="white" fontWeight="semibold">
-          Welkom Niels!
+          Welkom!
         </Text>
       </Stack>
     </Stack>
