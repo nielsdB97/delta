@@ -26,6 +26,7 @@
   "devDependencies": {
     "@cypress/react": "^5.10.0",
     "@cypress/webpack-dev-server": "^1.6.0",
+    "@testing-library/cypress": "^8.0.1",
     "@types/react": "17.0.21",
     "cypress": "^8.4.0",
     "eslint": "7.32.0",
