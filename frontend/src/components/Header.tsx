@@ -1,7 +1,11 @@
 import { Stack, Heading, Text, IconButton } from "@chakra-ui/react";
+import { FavoritesDrawerOpenContext } from "context/FavoritesDrawerOpenContext";
+import { useContext } from "react";
 import { HiHeart } from "react-icons/hi";
 
 function Header() {
+  const FavoritesDrawerDisclosure = useContext(FavoritesDrawerOpenContext);
+
   return (
     <Stack
       as="header"
@@ -16,7 +20,11 @@ function Header() {
       </Heading>
 
       <Stack isInline alignItems="center">
-        <IconButton icon={<HiHeart />} aria-label="Favorieten" />
+        <IconButton
+          icon={<HiHeart />}
+          onClick={FavoritesDrawerDisclosure?.onToggle}
+          aria-label="Favorieten"
+        />
         <Text as="span" color="white" fontWeight="semibold">
           Welkom Niels!
         </Text>
