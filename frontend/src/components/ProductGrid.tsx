@@ -2,6 +2,7 @@ import {
   IconButton,
   SimpleGrid,
   Stack,
+  Skeleton,
   Heading,
   Tag,
   Text,
@@ -35,8 +36,16 @@ function ProductGrid({ productsSSR }: ProductGridProps) {
   }
   const [favorites, dispatch] = useFavorites;
 
-  if (!products) {
-    return null;
+  if (!products || products?.length < 1) {
+    return (
+      <SimpleGrid minChildWidth="300px" spacingX="4" spacingY="6">
+        {Array(30)
+          .fill(null)
+          .map((_, index) => (
+            <Skeleton key={index} width="300px" height="400px" />
+          ))}
+      </SimpleGrid>
+    );
   }
   return (
     <SimpleGrid minChildWidth="300px" spacingY="6">
