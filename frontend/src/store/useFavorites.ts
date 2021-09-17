@@ -9,12 +9,22 @@ export type AddFavoriteAction = {
   type: "ADD_FAVORITE";
   payload: Favorite;
 };
+export type UpdateFavoriteAction = {
+  type: "UPDATE_FAVORITE";
+  payload: {
+    productId: Favorite["productId"];
+    amount: number;
+  };
+};
 export type RemoveFavoriteAction = {
   type: "REMOVE_FAVORITE";
   payload: Favorite["productId"];
 };
 export type FavoritesState = Favorite[];
-export type FavoritesAction = AddFavoriteAction | RemoveFavoriteAction;
+export type FavoritesAction =
+  | AddFavoriteAction
+  | UpdateFavoriteAction
+  | RemoveFavoriteAction;
 
 export const addFavorite = (
   productId: string,
@@ -22,6 +32,19 @@ export const addFavorite = (
 ): FavoritesAction => {
   return {
     type: "ADD_FAVORITE",
+    payload: {
+      productId,
+      amount,
+    },
+  };
+};
+
+export const updateFavorite = (
+  productId: string,
+  amount: number
+): FavoritesAction => {
+  return {
+    type: "UPDATE_FAVORITE",
     payload: {
       productId,
       amount,
@@ -42,8 +65,9 @@ export const favoritesReducer: Reducer<FavoritesState, FavoritesAction> = (
   action
 ) => {
   switch (action.type) {
-    case "ADD_FAVORITE": {
-      const { productId, amount = 1 } = action.payload;
+    case "ADD_FAVORITE":
+    case "UPDATE_FAVORITE": {
+      const { productId, amount } = action.payload;
       const favorite: Favorite = { productId, amount };
 
       const newState = [...state];
