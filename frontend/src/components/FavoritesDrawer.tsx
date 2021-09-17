@@ -8,10 +8,11 @@ import {
   IconButton,
   Input,
   Text,
+  SimpleGrid,
   Stack,
 } from "@chakra-ui/react";
 import type { DrawerProps } from "@chakra-ui/modal";
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import { FavoritesContext } from "context/FavoritesContext";
 import { useProducts } from "api/products";
 import { HiTrash } from "react-icons/hi";
@@ -30,14 +31,17 @@ function FavoritesDrawer(props: FavoritesDrawerProps) {
   const [favorites, dispatch] = useFavorites;
 
   return (
-    <Drawer {...props}>
+    <Drawer {...props} size="md">
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
         <DrawerHeader>Favorieten</DrawerHeader>
 
         <DrawerBody>
-          <Stack spacing="4">
+          <SimpleGrid
+            templateColumns={{ base: "2fr 1fr", md: "3fr 1fr" }}
+            spacing="4"
+          >
             {favorites.map((favorite) => {
               const product = products.find(
                 (product) => product.id === favorite.productId
@@ -59,8 +63,9 @@ function FavoritesDrawer(props: FavoritesDrawerProps) {
                 );
               }
               return (
-                <Stack key={product.id} isInline justifyContent="space-between">
-                  <Text>{product.title}</Text>
+                <Fragment key={product.id}>
+                  <Text flexGrow={1}>{product.title}</Text>
+
                   <Stack isInline>
                     <Input
                       defaultValue={favorite.amount}
@@ -69,6 +74,7 @@ function FavoritesDrawer(props: FavoritesDrawerProps) {
                           updateFavorite(product.id, parseInt(value, 10))
                         );
                       }}
+                      w="full"
                     />
                     <IconButton
                       icon={<HiTrash />}
@@ -79,10 +85,10 @@ function FavoritesDrawer(props: FavoritesDrawerProps) {
                       aria-label="Verwijder favoriet"
                     />
                   </Stack>
-                </Stack>
+                </Fragment>
               );
             })}
-          </Stack>
+          </SimpleGrid>
         </DrawerBody>
       </DrawerContent>
     </Drawer>
