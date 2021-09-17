@@ -14,7 +14,14 @@ import { useFavorites } from "store/useFavorites";
 import { FavoritesContext } from "context/FavoritesContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchInterval: false,
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
 
   const FavoritesDrawerDisclosure = useDisclosure();
   const [favorites, dispatch] = useFavorites();
