@@ -10,7 +10,15 @@ export default function handler(
   _req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const filePath = join(__dirname, "..", "..", "..", "..", "products.json");
+  const filePath = join(
+    __dirname,
+    "..",
+    "..",
+    "..",
+    "..",
+    "public",
+    "products.json"
+  );
   const stat = statSync(filePath);
 
   res.writeHead(200, {
