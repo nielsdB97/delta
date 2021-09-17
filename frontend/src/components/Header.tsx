@@ -13,6 +13,11 @@ function Header() {
   }
   const [favorites] = useFavorites;
 
+  const favoritesAmount = favorites.reduce(
+    (acc, favorite) => acc + favorite.amount,
+    0
+  );
+
   return (
     <Stack
       as="header"
@@ -33,20 +38,22 @@ function Header() {
             onClick={FavoritesDrawerDisclosure?.onToggle}
             aria-label="Favorieten"
           />
-          <Box
-            position="absolute"
-            top="-10px"
-            right="-10px"
-            w="6"
-            h="6"
-            bg="pink.500"
-            color="white"
-            rounded="full"
-            textAlign="center"
-            fontSize="sm"
-          >
-            {favorites.length}
-          </Box>
+          {favorites.length > 0 && (
+            <Box
+              position="absolute"
+              top="-10px"
+              right="-10px"
+              w="6"
+              h="6"
+              bg="pink.500"
+              color="white"
+              rounded="full"
+              textAlign="center"
+              fontSize="sm"
+            >
+              {favoritesAmount}
+            </Box>
+          )}
         </Box>
         <Text as="span" color="white" fontWeight="semibold">
           Welkom!
