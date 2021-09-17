@@ -18,7 +18,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
-    "react-query": "^3.23.2"
+    "react-query": "^3.23.2",
+    "use-persisted-reducer": "^2.1.0"
   },
   "devDependencies": {
     "@types/react": "17.0.21",

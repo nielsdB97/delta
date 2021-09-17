@@ -8,10 +8,19 @@ import {
   Text,
 } from "@chakra-ui/react";
 import type { DrawerProps } from "@chakra-ui/modal";
+import { useContext } from "react";
+import { FavoritesContext } from "context/FavoritesContext";
 
 type FavoritesDrawerProps = Omit<DrawerProps, "children">;
 
 function FavoritesDrawer(props: FavoritesDrawerProps) {
+  const useFavorites = useContext(FavoritesContext);
+
+  if (!useFavorites) {
+    return null;
+  }
+  const [favorites, dispatch] = useFavorites;
+
   return (
     <Drawer {...props}>
       <DrawerOverlay />
@@ -19,7 +28,11 @@ function FavoritesDrawer(props: FavoritesDrawerProps) {
         <DrawerCloseButton />
         <DrawerHeader>Favorieten</DrawerHeader>
 
-        <DrawerBody></DrawerBody>
+        <DrawerBody>
+          {favorites.map((favorite) => (
+            <p key={favorite.productId}>{favorite.amount}</p>
+          ))}
+        </DrawerBody>
       </DrawerContent>
     </Drawer>
   );

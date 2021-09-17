@@ -7,11 +7,20 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useProducts } from "api/products";
+import { FavoritesContext } from "context/FavoritesContext";
 import Image from "next/image";
+import { useContext } from "react";
 import { HiHeart } from "react-icons/hi";
+import { addFavorite } from "store/useFavorites";
 
 function ProductGrid() {
   const { data: products } = useProducts();
+  const useFavorites = useContext(FavoritesContext);
+
+  if (!useFavorites) {
+    return null;
+  }
+  const [favorites, dispatch] = useFavorites;
 
   if (!products) {
     return null;
@@ -54,6 +63,9 @@ function ProductGrid() {
               </Text>
               <IconButton
                 icon={<HiHeart />}
+                onClick={() => {
+                  dispatch(addFavorite(product.id));
+                }}
                 colorScheme="pink"
                 aria-label="Voeg toe aan favorieten"
               />
