@@ -68,6 +68,7 @@ function FavoritesDrawer(props: FavoritesDrawerProps) {
 
                   <Stack isInline>
                     <Input
+                      type="number"
                       defaultValue={favorite.amount}
                       onBlur={({ target: { value } }) => {
                         dispatch(
