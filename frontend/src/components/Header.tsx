@@ -31,7 +31,7 @@ function Header() {
         InterDelta
       </Heading>
 
-      <Stack isInline alignItems="center">
+      <Stack isInline alignItems="center" spacing="4">
         <Box pos="relative">
           <IconButton
             icon={<HiHeart />}
