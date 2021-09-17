@@ -6,15 +6,28 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
+import { APIClient } from "api/APIClient";
 import { useProducts } from "api/products";
 import { FavoritesContext } from "context/FavoritesContext";
+import type { GetStaticProps } from "next";
 import Image from "next/image";
 import { useContext } from "react";
 import { HiCheck, HiHeart } from "react-icons/hi";
 import { addFavorite } from "store/useFavorites";
+import type { Product } from "types/product";
 
-function ProductGrid() {
-  const { data: products } = useProducts();
+export const getStaticProps: GetStaticProps<ProductGridProps> = async () => {
+  const productsRequest = await APIClient.getProducts();
+  const products = productsRequest.data;
+
+  return { props: { productsSSR: products } };
+};
+
+interface ProductGridProps {
+  productsSSR: Product[];
+}
+function ProductGrid({ productsSSR }: ProductGridProps) {
+  const { data: products } = useProducts(productsSSR);
   const useFavorites = useContext(FavoritesContext);
 
   if (!useFavorites) {

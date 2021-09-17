@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         <title>InterDelta</title>
       </Head>
       <Heading fontSize="xl">Boormachines</Heading>
-      <ProductGrid />
+      <ProductGrid productsSSR={[]} />
     </Stack>
   );
 };
