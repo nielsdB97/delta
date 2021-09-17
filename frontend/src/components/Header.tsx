@@ -50,6 +50,7 @@ function Header() {
               rounded="full"
               textAlign="center"
               fontSize="sm"
+              data-testid="favorites-amount"
             >
               {favoritesAmount}
             </Box>
