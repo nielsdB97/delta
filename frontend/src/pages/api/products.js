@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 
 const NEWLINE_FOLLOWED_BY_SPACES = /(\n)[? ]*/g;
 
-const URL = "https://www.coolblue.nl/mobiele-telefoons/smartphones/filter";
+const URL = "https://www.coolblue.nl/boormachines/boorhamers";
 
 async function getHtml() {
   const textResponse = await axios(URL);

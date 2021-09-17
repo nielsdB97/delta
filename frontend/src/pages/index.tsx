@@ -9,7 +9,7 @@ const Home: NextPage = () => {
       <Head>
         <title>InterDelta</title>
       </Head>
-      <Heading fontSize="xl">Smartphones</Heading>
+      <Heading fontSize="xl">Boormachines</Heading>
       <ProductGrid />
     </Stack>
   );
