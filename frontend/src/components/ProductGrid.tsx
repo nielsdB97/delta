@@ -10,19 +10,20 @@ import {
 import { APIClient } from "api/APIClient";
 import { useProducts } from "api/products";
 import { FavoritesContext } from "context/FavoritesContext";
-import type { GetStaticProps } from "next";
+import type { GetServerSideProps } from "next";
 import Image from "next/image";
 import { useContext } from "react";
 import { HiCheck, HiHeart } from "react-icons/hi";
 import { addFavorite } from "store/useFavorites";
 import type { Product } from "types/product";
 
-export const getStaticProps: GetStaticProps<ProductGridProps> = async () => {
-  const productsRequest = await APIClient.getProducts();
-  const products = productsRequest.data;
+export const getServerSideProps: GetServerSideProps<ProductGridProps> =
+  async () => {
+    const productsRequest = await APIClient.getProducts();
+    const products = productsRequest.data;
 
-  return { props: { productsSSR: products } };
-};
+    return { props: { productsSSR: products } };
+  };
 
 interface ProductGridProps {
   productsSSR: Product[];
